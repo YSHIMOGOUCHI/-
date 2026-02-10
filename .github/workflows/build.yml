@@ -1,0 +1,29 @@
+name: Build EXE
+
+on:
+  push:
+    branches: [ "main" ] # mainブランチに保存されたら実行
+
+jobs:
+  build:
+    runs-on: windows-latest # Windows環境を使用
+
+    steps:
+    - uses: actions/checkout@v4 # あなたのコードを取得
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Install PyInstaller
+      run: pip install pyinstaller
+
+    - name: Build with PyInstaller
+      run: pyinstaller --onefile --noconsole clock.py # clock.pyをexe化
+
+    - name: Upload EXE
+      uses: actions/upload-artifact@v4
+      with:
+        name: DigitalClock-EXE # ダウンロード時の名前
+        path: dist/*.exe # 作成されたexeを保存
