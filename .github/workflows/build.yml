@@ -20,7 +20,7 @@ jobs:
       run: pip install pyinstaller
 
     - name: Build with PyInstaller
-      run: pyinstaller --onefile --noconsole clock.py # clock.pyをexe化
+      run: pyinstaller --onefile --noconsole 時計.py # clock.pyをexe化
 
     - name: Upload EXE
       uses: actions/upload-artifact@v4
