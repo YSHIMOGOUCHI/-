@@ -20,10 +20,10 @@ jobs:
       run: pip install pyinstaller
 
     - name: Build with PyInstaller
-      run: pyinstaller --onefile --noconsole clock.py # clock.pyをexe化
+      run: pyinstaller --onefile --noconsole 時計.py # clock.pyをexe化
 
     - name: Upload EXE
       uses: actions/upload-artifact@v4
       with:
-        name: DigitalClock-EXE # ダウンロード時の名前
+        name: 時計-EXE # ダウンロード時の名前
         path: dist/*.exe # 作成されたexeを保存
